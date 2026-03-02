@@ -1,4 +1,8 @@
-"""Configuration management for cradle."""
+"""Configuration management for cradle.
+
+>>> sorted(DEFAULT_CONFIG["templates"].keys())
+['experiments', 'package', 'paper']
+"""
 
 from pathlib import Path
 from typing import Any, cast
@@ -49,6 +53,16 @@ def _read_config(config_file: Path | None = None) -> dict[str, Any]:
 
 
 def get_all_templates(config_file: Path | None = None) -> dict[str, dict[str, Any]]:
-    """Get information about all templates."""
+    """Get information about all templates.
+
+    >>> import tempfile, yaml
+    >>> cfg = {"templates": {"demo": {"url": "https://github.com/x/demo", "description": "Demo"}}}
+    >>> with tempfile.NamedTemporaryFile(mode='w', suffix='.yaml', delete=False) as f:
+    ...     yaml.dump(cfg, f)
+    ...     name = f.name
+    >>> get_all_templates(Path(name))
+    {'demo': {'description': 'Demo', 'url': 'https://github.com/x/demo'}}
+    >>> Path(name).unlink()
+    """
     config = _read_config(config_file)
     return cast(dict[str, dict[str, Any]], config.get("templates", {}))

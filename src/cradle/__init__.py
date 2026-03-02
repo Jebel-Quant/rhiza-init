@@ -1,4 +1,8 @@
-"""cradle: Create repositories with a template structure."""
+"""cradle: Create repositories with a template structure.
+
+>>> isinstance(__version__, str)
+True
+"""
 
 import importlib.metadata
 
