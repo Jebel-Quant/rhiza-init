@@ -34,7 +34,7 @@ Prints a table of all templates registered in `~/.cradle/config.yaml`.
 
 ### Create a project
 
-```bash
+```bash +RHIZA_SKIP
 rhiza-cradle create <template> --name <project-name> --username <github-username>
 ```
 
